@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flashlight</title>
+<title>For u, Phuoc An</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -135,20 +135,7 @@
     transform: translate3d(var(--light-x), var(--light-y), 0);
   }
 
-  .flashbang {
-    position: fixed;
-    inset: 0;
-    z-index: 9;
-    pointer-events: none;
-    background: #fffdf4;
-    opacity: 0;
-  }
-  .flashbang.fire { animation: bang 0.5s ease-out; }
-  @keyframes bang {
-    0%   { opacity: 0.82; }
-    35%  { opacity: 0.28; }
-    100% { opacity: 0; }
-  }
+  
 
   @media (max-width: 560px) {
     :root { --light-r: 150px; --glow-r: 240px; }
@@ -166,7 +153,6 @@
   <div class="darkness"></div>
   <div class="glow"></div>
   <div class="bulb"></div>
-  <div class="flashbang" id="flashbang"></div>
 
 <script>
 /* =====================================================================
@@ -181,7 +167,6 @@ const IMAGE_SRC = "Lovelo.jpg";
   const root      = document.documentElement;
   const photo     = document.getElementById('photo');
   const theImage  = document.getElementById('theImage');
-  const flashbang = document.getElementById('flashbang');
 
   // only (re)assign if it differs from the markup, avoids a redundant request
   if (theImage.getAttribute('src') !== IMAGE_SRC) {
@@ -222,13 +207,7 @@ const IMAGE_SRC = "Lovelo.jpg";
     ty = window.innerHeight / 2;
   });
 
-  function fire() {
-    flashbang.classList.remove('fire');
-    void flashbang.offsetWidth;
-    flashbang.classList.add('fire');
-  }
-  document.addEventListener('click', fire);
-  document.addEventListener('touchend', fire, { passive: true });
+  
 
   // --- loop ---
   function loop() {
